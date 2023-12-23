@@ -1,17 +1,14 @@
 import React from 'react'
+import Socials from './socials'
+import { Link as GatsbyLink } from 'gatsby'
 
-import LinkedInIcon from '@mui/icons-material/LinkedIn'
-import GitHubIcon from '@mui/icons-material/GitHub'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import InstagramIcon from '@mui/icons-material/Instagram'
+import { mainFooter, subFooter, footerColumn } from './footer.module.css'
 
-import {
-  mainFooter,
-  subFooter,
-  socials,
-  socialsItem,
-  footerColumn,
-} from './footer.module.css'
+const FooterLink = ({ to, children }) => (
+  <li>
+    <GatsbyLink to={to}>{children}</GatsbyLink>
+  </li>
+)
 
 const Footer = () => {
   return (
@@ -21,32 +18,17 @@ const Footer = () => {
           <div>
             <h4>Adilet Baimyrza</h4>
             <p>I am helping people by creating beautiful websites</p>
+            <Socials />
           </div>
-
-          <ul className={socials}>
-            <li className={socialsItem}>
-              <LinkedInIcon />
-            </li>
-            <li className={socialsItem}>
-              <GitHubIcon />
-            </li>
-            <li className={socialsItem}>
-              <FacebookIcon />
-            </li>
-            <li className={socialsItem}>
-              <InstagramIcon />
-            </li>
-          </ul>
         </div>
 
         <div className={footerColumn}>
           <h4>Navigation</h4>
           <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Projects</li>
-            <li>Resume</li>
-            <li>Bookshelf</li>
+            <FooterLink to={'/'}>Home</FooterLink>
+            <FooterLink to={'/about'}>About</FooterLink>
+            <FooterLink to={'/projects'}>Projects</FooterLink>
+            <FooterLink to={'/bookshelf'}>Bookshlef</FooterLink>
           </ul>
         </div>
 

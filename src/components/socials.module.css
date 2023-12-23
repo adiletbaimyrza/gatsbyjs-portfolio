@@ -1,0 +1,15 @@
+.socials {
+  display: flex;
+}
+
+.socials-item {
+  padding: 0.2rem;
+  margin: 0.3rem;
+  font-size: 1.3rem;
+}
+
+@media screen and (max-width: 600px) {
+  .socials-item {
+    font-size: 1.5rem;
+  }
+}
