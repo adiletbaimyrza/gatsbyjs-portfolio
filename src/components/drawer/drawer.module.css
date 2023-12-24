@@ -1,0 +1,85 @@
+.navigation-responsive {
+  display: none;
+  animation: slide 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.drawer-button {
+  display: none;
+  padding: 0.2rem;
+  margin: 0.3rem;
+}
+
+.icon-wrapper {
+  width: 2.2rem;
+  height: 2.2rem;
+  border-radius: 50%;
+  transition: color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  transition: background-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  &:hover {
+    background-color: var(--card-bg-color);
+  }
+}
+
+.nav-item {
+  display: flex;
+  & > *:not(:first-child) {
+    align-items: start;
+  }
+  font-size: 1.5rem;
+  margin: 0.6rem 1rem;
+  font-weight: 600;
+  cursor: pointer;
+
+  &:hover {
+    color: var(--text-on-hover);
+  }
+}
+
+.resume-button > * > * {
+  padding: 0;
+}
+
+.close {
+  justify-content: flex-end;
+}
+
+@keyframes slide {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .settings-item {
+    padding: 0.2rem;
+    margin: 0.3rem;
+    font-size: 1.3rem;
+  }
+
+  .navigation-responsive {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    background-color: var(--main-bg-color);
+    right: 0;
+    top: 0;
+    left: 0;
+    bottom: 0;
+  }
+
+  .drawer-button {
+    display: block;
+  }
+
+  .icon {
+    font-size: 1.5rem;
+  }
+}

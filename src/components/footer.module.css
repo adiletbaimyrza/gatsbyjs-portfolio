@@ -1,5 +1,6 @@
 footer {
   background-color: var(--card-bg-color);
+  color: var(--foo-color);
   padding-top: 1rem;
 }
 
@@ -14,15 +15,6 @@ footer {
 
 .footer-column {
   margin: 0 1rem;
-}
-
-.socials {
-  display: flex;
-  margin: 1rem 0;
-}
-
-.footer-column ul li {
-  margin: 0.2rem;
 }
 
 .footer-column h4 {

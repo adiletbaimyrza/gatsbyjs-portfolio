@@ -1,77 +1,25 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import { useState, useEffect } from 'react'
+import NavLink from './navLink/navlink'
 import { StaticImage } from 'gatsby-plugin-image'
 import Socials from './socials'
-
-import LightModeIcon from '@mui/icons-material/LightMode'
-import DarkModeIcon from '@mui/icons-material/DarkMode'
-
-import { faBars } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import ToggleThemeButton from './toggleThemeButton/toggleThemeButton'
+import Drawer from './drawer/drawer'
+import ResumeDialog from './resumeDialog/resumeDialog'
 
 import {
-  settings,
-  settingsItem,
   navigation,
-  navItem,
   upperNavbar,
   mainNavbar,
+  settings,
+  settingsItem,
   fullname,
-  toggleThemeButton,
   avatar,
   avatarFullname,
-  icon,
-  drawerButton,
-  navigationResponsive,
+  resumeButton,
 } from './navbar.module.css'
 
-const NavLink = ({ to, children, onClick }) => (
-  <li className={navItem}>
-    <GatsbyLink onClick={onClick} to={to}>
-      {children}
-    </GatsbyLink>
-  </li>
-)
-
-const ToggleThemeButton = () => {
-  const initialTheme = localStorage.getItem('theme')
-  const [theme, setTheme] = useState(initialTheme)
-
-  const toggleTheme = () => {
-    setTheme((theme) => (theme === 'light' ? 'dark' : 'light'))
-  }
-
-  useEffect(() => {
-    document.documentElement.classList.remove('light', 'dark')
-    document.documentElement.classList.add(theme)
-    localStorage.setItem('theme', theme)
-  }, [theme])
-
-  return (
-    <button className={toggleThemeButton} onClick={toggleTheme}>
-      {theme === 'light' ? (
-        <DarkModeIcon className={icon} />
-      ) : (
-        <LightModeIcon className={icon} />
-      )}
-    </button>
-  )
-}
-
 const Navbar = () => {
-  const [isDrawerOpen, setIsDrawerOpen] = useState(false)
-
-  const handleDrawer = () => {
-    setIsDrawerOpen(!isDrawerOpen)
-  }
-
-  const handleNavLinkResponsive = () => {
-    setIsDrawerOpen(false)
-    console.log('click')
-  }
-
   return (
     <nav>
       <div className={upperNavbar}>
@@ -88,47 +36,26 @@ const Navbar = () => {
         <div className={avatarFullname}>
           <StaticImage
             className={avatar}
-            alt="Adilet Baimyrza"
-            src={'../images/profilePic.JPG'}
+            alt="Adilet Baimyrza's avatar picture."
+            src={'../images/avatar.jpg'}
           />
           <GatsbyLink to="/">
             <h4 className={fullname}>Adilet Baimyrza</h4>
           </GatsbyLink>
         </div>
 
-        <ul
-          id="menu"
-          className={navigationResponsive}
-          style={{ display: isDrawerOpen ? 'flex' : 'none' }}
-        >
-          <NavLink onClick={handleNavLinkResponsive} to={'/'}>
-            Home
-          </NavLink>
-          <NavLink onClick={handleNavLinkResponsive} to={'/about'}>
-            About
-          </NavLink>
-          <NavLink to={'/projects'}>Projects</NavLink>
-          <li className={navItem}>Resume</li>
-          <NavLink onClick={handleNavLinkResponsive} to={'/bookshelf'}>
-            Bookshelf
-          </NavLink>
-        </ul>
-
         <ul className={navigation}>
           <NavLink to={'/'}>Home</NavLink>
+          <NavLink to={'/blog'}>Blog</NavLink>
           <NavLink to={'/about'}>About</NavLink>
           <NavLink to={'/projects'}>Projects</NavLink>
-          <li className={navItem}>Resume</li>
+          <li className={resumeButton}>
+            <ResumeDialog />
+          </li>
           <NavLink to={'/bookshelf'}>Bookshelf</NavLink>
         </ul>
 
-        <button onClick={handleDrawer} className={drawerButton}>
-          {isDrawerOpen ? (
-            <FontAwesomeIcon icon={faXmark} />
-          ) : (
-            <FontAwesomeIcon icon={faBars} />
-          )}
-        </button>
+        <Drawer />
       </div>
     </nav>
   )

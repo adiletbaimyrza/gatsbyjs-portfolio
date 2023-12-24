@@ -17,7 +17,10 @@ const Footer = () => {
         <div className={footerColumn}>
           <div>
             <h4>Adilet Baimyrza</h4>
-            <p>I am helping people by creating beautiful websites</p>
+            <p style={{ maxWidth: '300px' }}>
+              I help people and teams by building and developing beautifully
+              designed user-friendly products.
+            </p>
             <Socials />
           </div>
         </div>

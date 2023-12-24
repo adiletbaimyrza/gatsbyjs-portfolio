@@ -1,8 +1,9 @@
 import React from 'react'
 import Navbar from './navbar'
 import Footer from './footer'
-import './layout.css'
 import { useEffect } from 'react'
+
+import './layout.css'
 
 const Layout = ({ children }) => {
   useEffect(() => {
