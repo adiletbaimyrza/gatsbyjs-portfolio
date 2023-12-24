@@ -1,11 +1,11 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
-import NavLink from './navLink/navlink'
+import NavLink from '../navLink/navlink'
 import { StaticImage } from 'gatsby-plugin-image'
-import Socials from './socials'
-import ToggleThemeButton from './toggleThemeButton/toggleThemeButton'
-import Drawer from './drawer/drawer'
-import ResumeDialog from './resumeDialog/resumeDialog'
+import Socials from '../socials/socials'
+import ToggleThemeButton from '../toggleThemeButton/toggleThemeButton'
+import Drawer from '../drawer/drawer'
+import ResumeDialog from '../resumeDialog/resumeDialog'
 
 import {
   navigation,
@@ -37,7 +37,7 @@ const Navbar = () => {
           <StaticImage
             className={avatar}
             alt="Adilet Baimyrza's avatar picture."
-            src={'../images/avatar.jpg'}
+            src={'../../images/avatar.jpg'}
           />
           <GatsbyLink to="/">
             <h4 className={fullname}>Adilet Baimyrza</h4>
