@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link as GatsbyLink } from 'gatsby'
+import { Link as GatsbyLink, navigate } from 'gatsby'
 import ResumeDialog from '../resumeDialog/resumeDialog'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { useLocation } from '@reach/router'
 
 import {
   navigationResponsive,
@@ -37,12 +38,14 @@ const Drawer = () => {
     document.getElementById('menu').classList.add(slideBack)
   }
 
+  const location = useLocation()
+
   return (
     <>
       <ul
         id="menu"
         className={navigationResponsive}
-        style={{ display: isDrawerOpen ? 'flex' : 'none' }}
+        style={{ visibility: isDrawerOpen ? 'visible' : 'hidden' }}
       >
         <li className={`${navItem} ${close}`}>
           <button
@@ -55,24 +58,29 @@ const Drawer = () => {
           </button>
         </li>
 
-        <div
-          onClick={() => {
-            addSlideBack()
-            setTimeout(handleClick, 1000)
-          }}
-        >
-          <GatsbyLink className={navItem} to={'/'}>
-            Home
-          </GatsbyLink>
-        </div>
-
         <GatsbyLink
           className={navItem}
           onClick={() => {
             addSlideBack()
-            setTimeout(handleClick, 1000)
+            setTimeout(() => {
+              handleClick()
+              navigate('/')
+            }, 300)
           }}
-          to={'/blog'}
+          to={location.pathname}
+        >
+          Home
+        </GatsbyLink>
+        <GatsbyLink
+          className={navItem}
+          onClick={() => {
+            addSlideBack()
+            setTimeout(() => {
+              handleClick()
+              navigate('/blog')
+            }, 300)
+          }}
+          to={location.pathname}
         >
           Blog
         </GatsbyLink>
@@ -80,13 +88,27 @@ const Drawer = () => {
           className={navItem}
           onClick={() => {
             addSlideBack()
-            setTimeout(handleClick, 1000)
+            setTimeout(() => {
+              handleClick()
+              navigate('/about')
+            }, 300)
           }}
-          to={'/about'}
+          to={location.pathname}
         >
           About
         </GatsbyLink>
-        <GatsbyLink className={navItem} to={'/projects'}>
+
+        <GatsbyLink
+          className={navItem}
+          onClick={() => {
+            addSlideBack()
+            setTimeout(() => {
+              handleClick()
+              navigate('/projects')
+            }, 300)
+          }}
+          to={location.pathname}
+        >
           Projects
         </GatsbyLink>
         <li className={`${navItem} ${resumeButton}`}>
@@ -96,9 +118,12 @@ const Drawer = () => {
           className={navItem}
           onClick={() => {
             addSlideBack()
-            setTimeout(handleClick, 1000)
+            setTimeout(() => {
+              handleClick()
+              navigate('/bookshelf')
+            }, 300)
           }}
-          to={'/bookshelf'}
+          to={location.pathname}
         >
           Bookshelf
         </GatsbyLink>

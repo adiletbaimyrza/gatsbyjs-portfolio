@@ -1,5 +1,6 @@
 .navigation-responsive {
   display: none;
+  transition: visibility 0.3s;
 }
 
 .slide {
