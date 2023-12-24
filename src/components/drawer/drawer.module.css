@@ -1,6 +1,13 @@
 .navigation-responsive {
   display: none;
+}
+
+.slide {
   animation: slide 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+}
+
+.slide-back {
+  animation: forwards slideback 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
 }
 
 .drawer-button {
@@ -54,6 +61,15 @@
   }
   to {
     transform: translateX(0);
+  }
+}
+
+@keyframes slideback {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(100%);
   }
 }
 

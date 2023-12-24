@@ -14,6 +14,8 @@ import {
   navItem,
   resumeButton,
   close,
+  slide,
+  slideBack,
 } from './drawer.module.css'
 
 const Drawer = () => {
@@ -21,10 +23,18 @@ const Drawer = () => {
 
   const handleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen)
+
+    document.getElementById('menu').classList.remove(slideBack)
+    document.getElementById('menu').classList.add(slide)
   }
 
   const handleClick = () => {
     setIsDrawerOpen(false)
+  }
+
+  const addSlideBack = () => {
+    document.getElementById('menu').classList.remove(slide)
+    document.getElementById('menu').classList.add(slideBack)
   }
 
   return (
@@ -35,17 +45,45 @@ const Drawer = () => {
         style={{ display: isDrawerOpen ? 'flex' : 'none' }}
       >
         <li className={`${navItem} ${close}`}>
-          <button onClick={handleClick}>
+          <button
+            onClick={() => {
+              addSlideBack()
+              setTimeout(handleClick, 300)
+            }}
+          >
             <FontAwesomeIcon className={icon} icon={faXmark} />
           </button>
         </li>
-        <GatsbyLink className={navItem} onClick={handleClick} to={'/'}>
-          Home
-        </GatsbyLink>
-        <GatsbyLink className={navItem} onClick={handleClick} to={'/blog'}>
+
+        <div
+          onClick={() => {
+            addSlideBack()
+            setTimeout(handleClick, 1000)
+          }}
+        >
+          <GatsbyLink className={navItem} to={'/'}>
+            Home
+          </GatsbyLink>
+        </div>
+
+        <GatsbyLink
+          className={navItem}
+          onClick={() => {
+            addSlideBack()
+            setTimeout(handleClick, 1000)
+          }}
+          to={'/blog'}
+        >
           Blog
         </GatsbyLink>
-        <GatsbyLink className={navItem} onClick={handleClick} to={'/about'}>
+        <GatsbyLink
+          className={navItem}
+          onClick={() => {
+            addSlideBack()
+            setTimeout(handleClick, 1000)
+          }}
+          to={'/about'}
+        >
           About
         </GatsbyLink>
         <GatsbyLink className={navItem} to={'/projects'}>
@@ -54,7 +92,14 @@ const Drawer = () => {
         <li className={`${navItem} ${resumeButton}`}>
           <ResumeDialog />
         </li>
-        <GatsbyLink className={navItem} onClick={handleClick} to={'/bookshelf'}>
+        <GatsbyLink
+          className={navItem}
+          onClick={() => {
+            addSlideBack()
+            setTimeout(handleClick, 1000)
+          }}
+          to={'/bookshelf'}
+        >
           Bookshelf
         </GatsbyLink>
       </ul>
