@@ -1,12 +1,22 @@
 import React from 'react'
-import Socials from './socials'
+import Socials from '../socials/socials'
 import { Link as GatsbyLink } from 'gatsby'
 
-import { mainFooter, subFooter, footerColumn } from './footer.module.css'
+import {
+  mainFooter,
+  subFooter,
+  footerColumn,
+  motto,
+  link,
+  subItem,
+  subContainer,
+} from './footer.module.css'
 
 const FooterLink = ({ to, children }) => (
   <li>
-    <GatsbyLink to={to}>{children}</GatsbyLink>
+    <GatsbyLink className={link} to={to}>
+      {children}
+    </GatsbyLink>
   </li>
 )
 
@@ -16,8 +26,11 @@ const Footer = () => {
       <div className={mainFooter}>
         <div className={footerColumn}>
           <div>
-            <h4>Adilet Baimyrza</h4>
-            <p>I am helping people by creating beautiful websites</p>
+            <h4 style={{ marginLeft: '0.5rem' }}>Adilet Baimyrza</h4>
+            <blockquote className={motto}>
+              I help people and teams by building and developing beautifully
+              designed user-friendly products.
+            </blockquote>
             <Socials />
           </div>
         </div>
@@ -26,6 +39,7 @@ const Footer = () => {
           <h4>Navigation</h4>
           <ul>
             <FooterLink to={'/'}>Home</FooterLink>
+            <FooterLink to={'/blog'}>Blog</FooterLink>
             <FooterLink to={'/about'}>About</FooterLink>
             <FooterLink to={'/projects'}>Projects</FooterLink>
             <FooterLink to={'/bookshelf'}>Bookshlef</FooterLink>
@@ -54,10 +68,10 @@ const Footer = () => {
       </div>
 
       <div className={subFooter}>
-        <ul>
-          <li>Terms</li>
-          <li>Privacy</li>
-          <li>Imprint</li>
+        <ul className={subContainer}>
+          <button className={subItem}>Terms</button>
+          <button className={subItem}>Privacy</button>
+          <button className={subItem}>Imprint</button>
         </ul>
       </div>
     </footer>

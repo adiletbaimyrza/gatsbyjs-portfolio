@@ -4,9 +4,19 @@ nav {
   margin-bottom: 2rem;
 }
 
+.navigation {
+  display: flex;
+}
+
 .upper-navbar {
   display: flex;
   justify-content: space-between;
+}
+
+.main-navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .settings {
@@ -21,48 +31,28 @@ nav {
   align-items: center;
 }
 
-.main-navbar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
 .fullname {
   padding: 0.2rem;
   margin: 0.3rem;
+
+  &:hover {
+    color: var(--text-on-hover);
+  }
 }
 
-.navigation {
-  display: flex;
-}
-
-.navigation-responsive {
-  display: none;
-}
-
-.nav-item {
-  padding: 0.2rem;
+.resume-button {
   margin: 0.3rem;
+  border-radius: 0.2rem;
   display: flex;
   justify-content: center;
   align-items: center;
-}
+  transition: background-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
+  cursor: pointer;
 
-.toggle-theme-button {
-  border: none;
-  background: transparent;
-  color: inherit;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.drawer-button {
-  display: none;
-  z-index: 10;
-}
-
-.icon {
-  font-size: 1.3rem;
+  &:hover {
+    color: var(--text-on-hover);
+    background-color: var(--card-bg-color);
+  }
 }
 
 .avatar {
@@ -87,22 +77,6 @@ nav {
 
   .icon {
     font-size: 1.5rem;
-  }
-
-  .navigation-responsive {
-    display: flex;
-    flex-direction: column;
-    position: absolute;
-    background-color: grey;
-    right: 0;
-    top: 0;
-    left: 0;
-    bottom: 0;
-    height: 100vh;
-  }
-
-  .drawer-button {
-    display: block;
   }
 
   .navigation {

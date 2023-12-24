@@ -7,16 +7,27 @@ import { faLinkedin } from '@fortawesome/free-brands-svg-icons'
 import { faSquareEnvelope } from '@fortawesome/free-solid-svg-icons'
 import { faHashnode } from '@fortawesome/free-brands-svg-icons'
 
-import { socials, socialsItem } from './socials.module.css'
+import {
+  socials,
+  socialsItem,
+  socialsItemWrapper,
+  hashnode,
+} from './socials.module.css'
 
 const LINKEDIN_URL = 'https://linkedin.com/in/adiletbaimyrza'
 const GITHUB_URL = 'https://github.com/adiletbaimyrza'
 const MAILTO_URL = 'mailto:adilet.developer@gmail.com'
 const HASHNODE_URL = 'https://adiletbaimyrza.hashnode.dev'
 
-const SocialLink = ({ to, children }) => (
-  <li className={socialsItem}>
-    <GatsbyLink to={to} target="_blank" rel="noopener noreferrer">
+const SocialLink = ({ to, children, id }) => (
+  <li className={socialsItemWrapper}>
+    <GatsbyLink
+      className={socialsItem}
+      id={id}
+      to={to}
+      target="_blank"
+      rel="noopener noreferrer"
+    >
       {children}
     </GatsbyLink>
   </li>
@@ -34,7 +45,7 @@ const Socials = () => {
       <SocialLink to={MAILTO_URL}>
         <FontAwesomeIcon icon={faSquareEnvelope} />
       </SocialLink>
-      <SocialLink to={HASHNODE_URL}>
+      <SocialLink id={hashnode} to={HASHNODE_URL}>
         <FontAwesomeIcon icon={faHashnode} />
       </SocialLink>
     </ul>
