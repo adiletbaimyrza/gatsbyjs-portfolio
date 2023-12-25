@@ -48,6 +48,15 @@ footer {
 .sub-item:hover {
   text-decoration: underline;
   color: var(--text-on-hover);
+  cursor: pointer;
+}
+
+.sub-item {
+  font-size: 0.9rem;
+}
+
+.copyright {
+  font-size: 0.9rem;
 }
 
 @media screen and (max-width: 600px) {

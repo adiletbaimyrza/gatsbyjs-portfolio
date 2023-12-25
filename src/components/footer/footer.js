@@ -10,6 +10,7 @@ import {
   link,
   subItem,
   subContainer,
+  copyright,
 } from './footer.module.css'
 
 const FooterLink = ({ to, children }) => (
@@ -69,9 +70,9 @@ const Footer = () => {
 
       <div className={subFooter}>
         <ul className={subContainer}>
-          <button className={subItem}>Terms</button>
-          <button className={subItem}>Privacy</button>
-          <button className={subItem}>Imprint</button>
+          <div className={copyright}>&#169; 2023 Adilet Baimyrza</div>
+          <div className={subItem}>Privacy</div>
+          <div className={subItem}>Terms</div>
         </ul>
       </div>
     </footer>
