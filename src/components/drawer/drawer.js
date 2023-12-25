@@ -1,10 +1,11 @@
 import React from 'react'
 import { useState } from 'react'
-import { Link as GatsbyLink } from 'gatsby'
+import { Link as GatsbyLink, navigate } from 'gatsby'
 import ResumeDialog from '../resumeDialog/resumeDialog'
 import { faBars } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faXmark } from '@fortawesome/free-solid-svg-icons'
+import { useLocation } from '@reach/router'
 
 import {
   navigationResponsive,
@@ -14,6 +15,8 @@ import {
   navItem,
   resumeButton,
   close,
+  slide,
+  slideBack,
 } from './drawer.module.css'
 
 const Drawer = () => {
@@ -21,40 +24,107 @@ const Drawer = () => {
 
   const handleDrawer = () => {
     setIsDrawerOpen(!isDrawerOpen)
+
+    document.getElementById('menu').classList.remove(slideBack)
+    document.getElementById('menu').classList.add(slide)
   }
 
   const handleClick = () => {
     setIsDrawerOpen(false)
   }
 
+  const addSlideBack = () => {
+    document.getElementById('menu').classList.remove(slide)
+    document.getElementById('menu').classList.add(slideBack)
+  }
+
+  const location = useLocation()
+
   return (
     <>
       <ul
         id="menu"
         className={navigationResponsive}
-        style={{ display: isDrawerOpen ? 'flex' : 'none' }}
+        style={{ visibility: isDrawerOpen ? 'visible' : 'hidden' }}
       >
         <li className={`${navItem} ${close}`}>
-          <button onClick={handleClick}>
+          <button
+            onClick={() => {
+              addSlideBack()
+              setTimeout(handleClick, 300)
+            }}
+          >
             <FontAwesomeIcon className={icon} icon={faXmark} />
           </button>
         </li>
-        <GatsbyLink className={navItem} onClick={handleClick} to={'/'}>
+
+        <GatsbyLink
+          className={navItem}
+          onClick={() => {
+            addSlideBack()
+            setTimeout(() => {
+              handleClick()
+              navigate('/')
+            }, 300)
+          }}
+          to={location.pathname}
+        >
           Home
         </GatsbyLink>
-        <GatsbyLink className={navItem} onClick={handleClick} to={'/blog'}>
+        <GatsbyLink
+          className={navItem}
+          onClick={() => {
+            addSlideBack()
+            setTimeout(() => {
+              handleClick()
+              navigate('/blog')
+            }, 300)
+          }}
+          to={location.pathname}
+        >
           Blog
         </GatsbyLink>
-        <GatsbyLink className={navItem} onClick={handleClick} to={'/about'}>
+        <GatsbyLink
+          className={navItem}
+          onClick={() => {
+            addSlideBack()
+            setTimeout(() => {
+              handleClick()
+              navigate('/about')
+            }, 300)
+          }}
+          to={location.pathname}
+        >
           About
         </GatsbyLink>
-        <GatsbyLink className={navItem} to={'/projects'}>
+
+        <GatsbyLink
+          className={navItem}
+          onClick={() => {
+            addSlideBack()
+            setTimeout(() => {
+              handleClick()
+              navigate('/projects')
+            }, 300)
+          }}
+          to={location.pathname}
+        >
           Projects
         </GatsbyLink>
         <li className={`${navItem} ${resumeButton}`}>
           <ResumeDialog />
         </li>
-        <GatsbyLink className={navItem} onClick={handleClick} to={'/bookshelf'}>
+        <GatsbyLink
+          className={navItem}
+          onClick={() => {
+            addSlideBack()
+            setTimeout(() => {
+              handleClick()
+              navigate('/bookshelf')
+            }, 300)
+          }}
+          to={location.pathname}
+        >
           Bookshelf
         </GatsbyLink>
       </ul>
