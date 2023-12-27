@@ -1,6 +1,7 @@
 import React from 'react'
 import Socials from '../socials/socials'
 import { Link as GatsbyLink } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 
 import {
   mainFooter,
@@ -22,6 +23,21 @@ const FooterLink = ({ to, children }) => (
 )
 
 const Footer = () => {
+  const data = useStaticQuery(graphql`
+    query {
+      allMdx(sort: { frontmatter: { date: DESC } }) {
+        nodes {
+          frontmatter {
+            slug
+            title
+          }
+          excerpt
+          id
+        }
+      }
+    }
+  `)
+
   return (
     <footer>
       <div className={mainFooter}>
@@ -48,12 +64,15 @@ const Footer = () => {
         </div>
 
         <div className={footerColumn}>
-          <h4>Latest blog posts</h4>
+          <h4>Latest articles</h4>
           <ul>
-            <li>project number 1</li>
-            <li>project number 2</li>
-            <li>project number 3</li>
-            <li>project number 4</li>
+            {data.allMdx.nodes.map((node) => (
+              <li key={node.id}>
+                <GatsbyLink to={`/${node.frontmatter.slug}`}>
+                  {node.frontmatter.title}
+                </GatsbyLink>
+              </li>
+            ))}
           </ul>
         </div>
 
