@@ -12,15 +12,18 @@ import {
 } from './toggleThemeButton.module.css'
 
 const ToggleThemeButton = () => {
-  const initialTheme = localStorage.getItem('theme')
+  const initialTheme =
+    typeof window !== 'undefined' ? localStorage.getItem('theme') : 'dark'
   const [theme, setTheme] = useState(initialTheme)
   const [isClicked, setIsClicked] = useState(false)
-  const audio = new Audio(switchSound)
+  const audio = typeof window !== 'undefined' ? new Audio(switchSound) : null
 
   const toggleTheme = () => {
     setTheme((theme) => (theme === 'light' ? 'dark' : 'light'))
     setIsClicked(true)
-    audio.play()
+    if (audio) {
+      audio.play()
+    }
   }
 
   useEffect(() => {

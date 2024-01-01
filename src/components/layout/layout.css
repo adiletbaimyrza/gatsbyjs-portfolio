@@ -86,7 +86,18 @@ h5 {
 }
 
 main {
-  height: 70vh;
   max-width: 1000px;
   margin: 0 auto;
+}
+
+body,
+html,
+#___gatsby,
+#gatsby-focus-wrapper,
+.container {
+  height: 100%;
+}
+
+main {
+  height: ;
 }
