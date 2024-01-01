@@ -7,14 +7,7 @@ import './layout.css'
 
 const Layout = ({ children }) => {
   useEffect(() => {
-    const userCurrentPreference = localStorage.getItem('theme')
-
-    if (userCurrentPreference) {
-      document.documentElement.classList.add(userCurrentPreference)
-    } else {
-      localStorage.setItem('theme', 'dark')
-      document.documentElement.classList.add('dark')
-    }
+    document.documentElement.classList.add('dark')
   })
 
   return (

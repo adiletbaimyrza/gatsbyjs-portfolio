@@ -1,5 +1,4 @@
 import React from 'react'
-import { Link as GatsbyLink } from 'gatsby'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSquareGithub } from '@fortawesome/free-brands-svg-icons'
@@ -21,15 +20,15 @@ const HASHNODE_URL = 'https://adiletbaimyrza.hashnode.dev'
 
 const SocialLink = ({ to, children, id }) => (
   <li className={socialsItemWrapper}>
-    <GatsbyLink
+    <a
       className={socialsItem}
       id={id}
-      to={to}
+      href={to}
       target="_blank"
       rel="noopener noreferrer"
     >
       {children}
-    </GatsbyLink>
+    </a>
   </li>
 )
 
