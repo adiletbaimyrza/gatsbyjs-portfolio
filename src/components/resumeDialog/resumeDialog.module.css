@@ -26,3 +26,9 @@
 .image {
   min-width: 800px;
 }
+
+@media screen and (max-width: 600px) {
+  .resume-button {
+    padding: 0;
+  }
+}
