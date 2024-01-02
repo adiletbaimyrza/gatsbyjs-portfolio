@@ -1,10 +1,10 @@
 import React from 'react'
 import { Link as GatsbyLink } from 'gatsby'
 import { StaticImage } from 'gatsby-plugin-image'
-import Socials from './socials/socials'
+import Socials from './socials'
 import ToggleThemeButton from './toggleThemeButton'
 import Drawer from './drawer'
-import ResumeDialog from './resumeDialog/resumeDialog'
+import ResumeDialog from './resumeDialog'
 import styled from '@emotion/styled'
 import { css } from '@emotion/react'
 

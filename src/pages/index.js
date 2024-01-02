@@ -1,12 +1,11 @@
 import React from 'react'
-import Layout from '../components/layout/layout'
+import Layout from '../components/layout'
 import { TextLoop } from 'react-text-loop-next'
-import Hero from '../components/hero/hero'
+import Hero from '../components/hero'
 
 const IndexPage = () => {
   return (
     <Layout>
-      {' '}
       <h2>
         <TextLoop
           delay={300}

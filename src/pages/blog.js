@@ -1,6 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
-import Layout from '../components/layout/layout'
+import Layout from '../components/layout'
 
 const BlogPage = () => {
   return <Layout>BlogPage</Layout>
