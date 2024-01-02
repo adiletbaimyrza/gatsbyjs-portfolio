@@ -6,12 +6,125 @@ hero_image: './shabeeba-ameen-Z_tkPpWxwZ4-unsplash.jpg'
 hero_image_alt: 'A gray pitbull relaxing on the sidewalk with its tongue hanging out'
 hero_image_credit_text: 'Christopher Ayme'
 hero_image_credit_link: 'https://unsplash.com/photos/ocZ-_Y7-Ptg'
+tag: 'react'
 ---
 
-This is my first blog post! Isn't it _great_?
+# Dark Mode: The Easiest Way To Implement Theme Toggle Button in ReactJS
 
-Some of my **favorite** things are:
+#webdev #css #reactjs #dark-mode
 
-- Petting dogs
-- Singing
-- Eating potato-based foods
+Adilet Baimyrza - December 15, 2023
+
+In this article I am going to share the easiest way to implement light/dark mode toggle button in your ReactJS project. If you are a web developer, who is searching for a reusable template for light/dark mode toggle functionality, then this article is for you. In today's unpredictable world, the time has become the most valuable resource. Because of it, I made this tutorial for those, who would like to copy and paste the existing code, and move on to more important features of your ReactJS project. So said, let's begin.
+
+## Why implement theme toggling feature first?
+
+Ever since I started coding, I became a fan of dark themes immediately, mostly because I like to code in the evenings in total darkness with my laptop being the only source of light in the room. I have my VScode in dark theme, as well as all my other apps if they offer this funcionality. I bet I am not alone in my preferences of dark themes, that's why, if the website owners care about their dark theme lover clients, in my humble opinion, they should include that functionality.
+
+## Step 1: Add a JavaScript code to set the default theme
+
+First, let's insert the code snippet below inside the **head** tag of your **index.html** file, which serves as an entry point of your ReactJS application.
+
+```js
+<script type="text/javascript">
+  (() => {
+    const userCurrentPreference = localStorage.getItem("theme");
+
+    if (userCurrentPreference) {
+      document.documentElement.classList.add(userCurrentPreference);
+    } else {
+      localStorage.setItem("theme", "light");
+      document.documentElement.classList.add("light");
+    }
+  })();
+</script>
+```
+
+Like so:
+
+```js
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vite + React</title>
+
+    <script type="text/javascript">
+      (() => {
+        const userCurrentPreference = localStorage.getItem("theme");
+
+        if (userCurrentPreference) {
+          document.documentElement.classList.add(userCurrentPreference);
+        } else {
+          localStorage.setItem("theme", "light");
+          document.documentElement.classList.add("light");
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
+```
+
+The code, first, checks, if a key **theme** has a value stored in the browser's localStorage. If the user has visited the website before, it adds the theme to the **documentElement**, which is the **html** tag in index.html file. Otherwise, it sets the key to **light** as a default (in my case, in your case the default can be **dark**) and adds the theme to the html tag. It is important to add the code snippet in the **head** tag, in order to let the code run first before styles and the page is rendered on the screen.
+
+## Step 2: Add CSS styles with classes for light and dark modes
+
+Add the **style** tag below with the styles inside right below the JavaScript code we used before. There you can define your CSS color variables for light and dark themes. If you don't know double dash notations in CSS, it simply indicates that it is a CSS variable, which you would be able to reuse in your components' CSS files. If you are not familiar with CSS variables, I highly recommend you to learn more about them [here](https://developer.mozilla.org/en-US/docs/Web/CSS/Using_CSS_custom_properties)
+
+```html
+<style>
+  html.light {
+    --bg-color: white;
+  }
+  html.dark {
+    --bg-color: black;
+  }
+</style>
+```
+
+## Step 3: Add theme toggling functionality with useState and useEffect hooks
+
+I would personally create a separate component for a button with theme toggling functionality. Because, adding this functionality inside another component would bloat the code.
+
+Down below you will find the **ToggleThemeButton** component, which you could create and paste it inside the component you are working on (ex. NavBar). Firstly, we have created a state to hold the value of a theme, and initialized it by retrieving the value from the localStorage.
+
+Then, we define **toggleTheme** function to change the theme, and add it as a value of an **onClick** prop of a button. So, whenever the button is clicked it interchanges between "light" and "dark".
+
+Finally, we add a useEffect hook, and add **theme** state to the dependancy array of useEffect, so it fires when the state **theme** changes. This useEffect hook does only 2 things:
+
+1. It removes the current theme, and adds the "theme" class to the documentElement.
+2. It sets "theme" key of the localStorage to a new "theme" retrieved from state.
+
+```js
+const ToggleThemeButton = () => {
+  const initialTheme = localStorage.getItem('theme')
+  const [theme, setTheme] = useState(initialTheme)
+
+  const toggleTheme = () => {
+    setTheme((theme) => (theme === 'light' ? 'dark' : 'light'))
+  }
+
+  useEffect(() => {
+    document.documentElement.classList.remove('light', 'dark')
+    document.documentElement.classList.add(theme)
+
+    localStorage.setItem('theme', theme)
+  }, [theme])
+
+  return <button onClick={toggleTheme}>Toggle theme</button>
+}
+
+export default ToggleThemeButton
+```
+
+## Conclusion
+
+I hope it does help you with your current and future projects. This was the easiest way for implementing theme toggling funcionality in ReactJS I have known so far. Thank you for your time and attention. As I finish this tutorial, let me leave you with words from Fyodor Dostoevsky:
+
+> “The darker the night, the brighter the stars.”

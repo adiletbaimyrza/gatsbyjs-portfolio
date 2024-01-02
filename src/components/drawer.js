@@ -158,6 +158,7 @@ const ResponsiveNav = styled.ul`
     drawerOpen === null ? '' : drawerOpen ? slideIn : slideOut}
 
   display: none;
+  z-index: 10;
 
   @media screen and (max-width: 600px) {
     position: absolute;
