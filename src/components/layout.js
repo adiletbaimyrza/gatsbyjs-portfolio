@@ -1,6 +1,6 @@
 import React from 'react'
-import Navbar from '../navbar/navbar'
-import Footer from '../footer/footer'
+import Navbar from './navbar'
+import Footer from './footer'
 import { useEffect } from 'react'
 
 import './layout.css'

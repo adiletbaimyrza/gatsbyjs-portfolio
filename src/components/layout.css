@@ -86,6 +86,7 @@ h5 {
 }
 
 main {
+  height: auto;
   max-width: 1000px;
   margin: 0 auto;
 }
@@ -96,8 +97,4 @@ html,
 #gatsby-focus-wrapper,
 .container {
   height: 100%;
-}
-
-main {
-  height: ;
 }
