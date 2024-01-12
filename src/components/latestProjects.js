@@ -4,9 +4,8 @@ import { Link as GatsbyLink } from 'gatsby'
 import { GatsbyImage, getImage } from 'gatsby-plugin-image'
 import { graphql, useStaticQuery } from 'gatsby'
 import { css } from '@emotion/react'
-import Layout from '../components/layout'
 
-const BlogPage = () => {
+const LatestProjects = () => {
   const data = useStaticQuery(graphql`
     query MyQuery {
       allMdx(sort: { frontmatter: { date: DESC } }) {
@@ -30,51 +29,52 @@ const BlogPage = () => {
     }
   `)
 
-  const articles = data.allMdx.nodes
+  const latestThree = data.allMdx.nodes.slice(0, 3)
 
   return (
-    <Layout>
-      <Container>
-        <H1>Articles</H1>
-        <Grid>
-          {articles.map((node, index) => {
-            const image = getImage(node.frontmatter.hero_image)
-            return (
-              <Card key={index} to={`/${node.frontmatter.slug}`}>
-                <GatsbyImage
-                  image={image}
-                  css={imageStyles}
-                  alt={node.frontmatter.hero_image_alt}
-                />
+    <Container>
+      <H1>Latest articles</H1>
+      <Grid>
+        {latestThree.map((node, index) => {
+          const image = getImage(node.frontmatter.hero_image)
+          return (
+            <Card key={index} to={`/${node.frontmatter.slug}`}>
+              <GatsbyImage
+                image={image}
+                css={imageStyles}
+                alt={node.frontmatter.hero_image_alt}
+              />
 
-                <TextContainer>
-                  <H2>{node.frontmatter.title}</H2>
+              <TextContainer>
+                <H2>{node.frontmatter.title}</H2>
 
-                  <DivFlex>
-                    <DateText>
-                      {new Date(node.frontmatter.date).toLocaleDateString(
-                        'en-US',
-                        {
-                          year: 'numeric',
-                          month: 'long',
-                          day: 'numeric',
-                        }
-                      )}{' '}
-                      •
-                    </DateText>
-                    <Tag>{node.frontmatter.tag}</Tag>
-                  </DivFlex>
-                </TextContainer>
-              </Card>
-            )
-          })}
-        </Grid>
-      </Container>
-    </Layout>
+                <DivFlex>
+                  <DateText>
+                    {new Date(node.frontmatter.date).toLocaleDateString(
+                      'en-US',
+                      {
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric',
+                      }
+                    )}{' '}
+                    •
+                  </DateText>
+                  <Tag>{node.frontmatter.tag}</Tag>
+                </DivFlex>
+              </TextContainer>
+            </Card>
+          )
+        })}
+      </Grid>
+      <BlogLinkWrapper>
+        <BlogLink to="/blog">More...</BlogLink>
+      </BlogLinkWrapper>
+    </Container>
   )
 }
 
-export default BlogPage
+export default LatestProjects
 
 const H1 = styled.h1`
   margin-bottom: 3rem;

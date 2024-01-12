@@ -1,0 +1,33 @@
+.bookshelf {
+  margin: auto;
+  width: 80%;
+}
+.bookshelf .year {
+  font-size: 4rem;
+}
+.bookshelf .info {
+  background-color: var(--card-bg-color);
+  margin: 1rem 1rem;
+  padding: 4rem;
+  border-radius: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.bookshelf .info p {
+  line-height: 2;
+}
+.bookshelf .book {
+  background-color: var(--card-bg-color);
+  margin: 1rem 1rem;
+  padding: 1rem;
+  border-radius: 0.6rem;
+}
+.bookshelf .book > * {
+  margin: 0;
+  padding: 0;
+}
+.bookshelf .book h3 {
+  margin-bottom: 1rem;
+  font-weight: 500;
+} /*# sourceMappingURL=Bookshelf.module.css.map */
