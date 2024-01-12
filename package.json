@@ -25,6 +25,7 @@
     "@mdx-js/react": "^2.3.0",
     "@mui/icons-material": "^5.15.1",
     "@mui/material": "^5.15.1",
+    "animate.css": "^4.1.1",
     "gatsby": "^5.13.0",
     "gatsby-image": "^3.11.0",
     "gatsby-plugin-emotion": "^8.13.0",
@@ -34,7 +35,9 @@
     "gatsby-source-filesystem": "^5.13.0",
     "gatsby-transformer-sharp": "^5.13.0",
     "react": "^18.2.0",
+    "react-animation-on-scroll": "^5.1.0",
     "react-dom": "^18.2.0",
-    "react-text-loop-next": "^0.0.3"
+    "react-text-loop-next": "^0.0.3",
+    "swiper": "^11.0.5"
   }
 }

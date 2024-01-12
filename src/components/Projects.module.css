@@ -1,0 +1,53 @@
+.projects {
+  max-width: 100%;
+}
+.projects .projectsTitle {
+  font-size: 4rem;
+}
+.projects .project {
+  display: flex;
+  flex-direction: column;
+  display: flex;
+  margin: 6.5rem 0;
+  background-color: var(--card-bg-color);
+  max-width: 100%;
+  padding: 2rem 5rem;
+  border-radius: 1rem;
+  font-size: 1rem;
+}
+.projects .project .img {
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+.projects .project .links {
+  display: flex;
+}
+.projects .project .links a {
+  border-radius: 0.3rem;
+  margin: 0.5rem;
+  color: inherit;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.projects .project .links a:hover {
+  background-color: var(--button-bg-on-hover);
+}
+@media screen and (max-width: 700px) {
+  .projects .project {
+    padding: 1rem;
+  }
+}
+
+#ipad {
+  max-width: 600px;
+}
+
+#laptop {
+  max-width: 770px;
+}
+
+.swiper {
+  margin: 6.5rem 0;
+} /*# sourceMappingURL=Projects.module.css.map */
