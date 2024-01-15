@@ -106,11 +106,11 @@ const Column = styled.div`
   margin: 0 1rem;
 `
 const MainFooter = styled.footer`
-  background-color: var(--foo-bg-color);
-  color: var(--foo-color);
   padding-top: 1rem;
   line-height: 2;
   font-size: 0.9rem;
+  max-width: 960px;
+  margin: 0 auto;
 `
 const UpperFooter = styled.div`
   display: flex;

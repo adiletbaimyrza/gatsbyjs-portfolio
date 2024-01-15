@@ -23,7 +23,7 @@ const Hero = () => {
           <AccentedText>design</AccentedText>
           <AccentedText>develop</AccentedText>
         </TextLoop>{' '}
-        dynamic and user-friendly products for the Web
+        user-friendly web products
       </H2>
     </HeroContainer>
   )
@@ -45,11 +45,11 @@ const H1 = styled.h1`
 `
 
 const H2 = styled.h2`
-  font-size: 2.5rem;
+  font-size: 3rem;
   line-height: 1.5;
 
   @media screen and (max-width: 600px) {
-    font-size: 1.5rem;
+    font-size: 2rem;
   }
 `
 
@@ -83,9 +83,9 @@ const imageStyles = css`
 `
 
 const HeroContainer = styled.div`
-  padding: 10rem 1rem;
+  margin: 6.5rem 0.2rem;
 
   @media screen and (max-width: 600px) {
-    padding: 3rem 1rem;
+    margin: 1rem 1rem 4rem 1rem;
   }
 `

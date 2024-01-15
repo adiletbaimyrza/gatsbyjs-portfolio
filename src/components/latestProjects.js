@@ -33,7 +33,10 @@ const LatestProjects = () => {
 
   return (
     <Container>
-      <H1>Latest articles</H1>
+      <Header>
+        <H1>Projects</H1>
+        <BlogLink to="/projects">View All</BlogLink>
+      </Header>
       <Grid>
         {latestThree.map((node, index) => {
           const image = getImage(node.frontmatter.hero_image)
@@ -67,18 +70,13 @@ const LatestProjects = () => {
           )
         })}
       </Grid>
-      <BlogLinkWrapper>
-        <BlogLink to="/blog">More...</BlogLink>
-      </BlogLinkWrapper>
     </Container>
   )
 }
 
 export default LatestProjects
 
-const H1 = styled.h1`
-  margin-bottom: 3rem;
-`
+const H1 = styled.h1``
 
 const DivFlex = styled.div`
   display: flex;
@@ -103,9 +101,11 @@ const imageStyles = css`
 `
 
 const Container = styled.div`
-  padding: 1rem;
-  margin: 5rem 0;
-  margin-bottom: 20rem;
+  margin: 0 0.2rem 6.5rem 0.2rem;
+
+  @media screen and (max-width: 600px) {
+    margin: 0 1rem 6.5rem 1rem;
+  }
 `
 const Grid = styled.div`
   display: grid;
@@ -123,9 +123,11 @@ const Grid = styled.div`
 const Card = styled(GatsbyLink)`
   border-radius: 0.5rem;
   background-color: var(--card-bg-color);
+  border: 3px solid var(--card-bg-color);
+  transition: all cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.2s;
 
   &:hover {
-    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
   }
 `
 const TextContainer = styled.div`
@@ -138,10 +140,19 @@ const BlogLinkWrapper = styled.div`
 `
 
 const BlogLink = styled(GatsbyLink)`
-  color: var(--text-on-hover);
-  font-size: 1.2rem;
+  font-size: 1.1rem;
+  background-color: var(--card-bg-color);
+  padding: 0.6rem;
+  border-radius: 0.2rem;
 
   &:hover {
-    text-decoration: underline;
+    color: var(--text-on-hover);
   }
+`
+const Header = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 3rem;
+  margin-bottom: 3rem;
 `

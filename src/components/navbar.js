@@ -117,7 +117,7 @@ const MainNavbar = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin: 1rem 0;
+  margin-top: 0.5rem;
 `
 
 const UpperNavbar = styled.div`
@@ -138,7 +138,6 @@ const SettingsItem = styled.li`
 `
 
 const Nav = styled.nav`
-  max-width: 1000px;
+  max-width: 960px;
   margin: 0 auto;
-  margin-bottom: 2rem;
 `
