@@ -1,89 +1,77 @@
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { Navigation, Autoplay } from 'swiper/modules'
-import { swiper, swiperSlide } from './Projects.module.css'
+import { Autoplay } from 'swiper/modules'
 import React from 'react'
+import styled from '@emotion/styled'
 
 import 'swiper/css'
-import 'swiper/css/navigation'
+
+const pens = [
+  'https://codepen.io/AdiletBaimyrza/embed/XWGmdJj',
+  'https://codepen.io/AdiletBaimyrza/embed/xxmNpaj',
+  'https://codepen.io/AdiletBaimyrza/embed/eYbwPge',
+  'https://codepen.io/AdiletBaimyrza/embed/abPeGJZ',
+  'https://codepen.io/AdiletBaimyrza/embed/BaMNOew',
+  'https://codepen.io/AdiletBaimyrza/embed/vYbyRpN',
+  'https://codepen.io/AdiletBaimyrza/embed/YzdbEXp',
+  'https://codepen.io/AdiletBaimyrza/embed/mdoJQvR',
+]
 
 const Codepens = () => {
   return (
-    <Swiper
-      className={swiper}
-      loop={true}
-      slidesPerView={3}
-      spaceBetween={0}
-      modules={[Navigation, Autoplay]}
-      autoplay={{
-        delay: 2000,
-      }}
-      breakpoints={{
-        // when window width is >= 700px
-        700: {
-          slidesPerView: 3,
-        },
-        // when window width is < 700px
-        0: {
-          slidesPerView: 1,
-        },
-      }}
-    >
-      <SwiperSlide className={swiperSlide}>
-        <iframe
-          height="300px"
-          style={{ width: '300px' }}
-          title="100 Days CSS: day #1 "
-          src="https://codepen.io/AdiletBaimyrza/embed/xxmNpaj?tab=result"
-          allowFullScreen="true"
-        ></iframe>
-      </SwiperSlide>
-      <SwiperSlide className={swiperSlide}>
-        <iframe
-          height="300px"
-          style={{ width: '300px' }}
-          title="100 Days CSS: day #1 "
-          src="https://codepen.io/AdiletBaimyrza/embed/eYbwPge?default-tab=result"
-          allowFullScreen="true"
-        ></iframe>
-      </SwiperSlide>
-      <SwiperSlide className={swiperSlide}>
-        <iframe
-          height="300px"
-          style={{ width: '300px' }}
-          title="100 Days CSS: day #1 "
-          src="https://codepen.io/AdiletBaimyrza/embed/abPeGJZ?default-tab=result"
-          allowFullScreen="true"
-        ></iframe>
-      </SwiperSlide>
-      <SwiperSlide className={swiperSlide}>
-        <iframe
-          height="300px"
-          style={{ width: '300px' }}
-          title="100 Days CSS: day #1 "
-          src="https://codepen.io/AdiletBaimyrza/embed/BaMNOew?default-tab=result"
-          allowFullScreen="true"
-        ></iframe>
-      </SwiperSlide>
-      <SwiperSlide className={swiperSlide}>
-        <iframe
-          height="300px"
-          style={{ width: '300px' }}
-          title="100 Days CSS: day #1 "
-          src="https://codepen.io/AdiletBaimyrza/embed/vYbyRpN?default-tab=result"
-          allowFullScreen="true"
-        ></iframe>
-      </SwiperSlide>
-      <SwiperSlide className={swiperSlide}>
-        <iframe
-          height="300px"
-          style={{ width: '300px' }}
-          title="100 Days CSS: day #1 "
-          src="https://codepen.io/AdiletBaimyrza/embed/YzdbEXp?default-tab=result"
-          allowFullScreen="true"
-        ></iframe>
-      </SwiperSlide>
-    </Swiper>
+    <Container>
+      <h1>More</h1>
+      <CustomSwiper
+        loop={true}
+        slidesPerView={3}
+        spaceBetween={0}
+        modules={[Autoplay]}
+        autoplay={{
+          delay: 3000,
+        }}
+        breakpoints={{
+          700: {
+            slidesPerView: 3,
+          },
+          500: {
+            slidesPerView: 2,
+          },
+          400: {
+            slidesPerView: 1,
+          },
+        }}
+      >
+        {pens.map((pen) => (
+          <SwiperSlide>
+            <Iframe
+              title="100 Days CSS: day #1 "
+              src={pen}
+              allowFullScreen="true"
+            ></Iframe>
+          </SwiperSlide>
+        ))}
+      </CustomSwiper>
+    </Container>
   )
 }
 
 export default Codepens
+
+const Container = styled.div`
+  margin: 0 0.2rem 6.5rem 0.2rem;
+`
+
+const CustomSwiper = styled(Swiper)`
+  margin-top: 3rem;
+`
+const Iframe = styled.iframe`
+  width: 300px;
+  height: 300px;
+  @media screen and (max-width: 800px) {
+    width: 400px;
+    height: 400px;
+  }
+  @media screen and (max-width: 600px) {
+    width: 500px;
+    height: 500px;
+  }
+`

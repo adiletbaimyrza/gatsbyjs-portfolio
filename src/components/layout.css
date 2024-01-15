@@ -82,12 +82,12 @@ h2,
 h3,
 h4,
 h5 {
-  font-family: 'Merriweather Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
 }
 
 main {
   height: auto;
-  max-width: 1000px;
+  max-width: 960px;
   margin: 0 auto;
 }
 

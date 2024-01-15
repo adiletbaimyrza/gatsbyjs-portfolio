@@ -1,11 +1,10 @@
 import React from 'react'
 import Layout from '../components/layout'
 import { books } from './books'
-import kindle from './kindle.jpg?url'
+import kindle from '../images/kindle.jpg'
 import { AnimationOnScroll } from 'react-animation-on-scroll'
-
+import styled from '@emotion/styled'
 import 'animate.css/animate.min.css'
-import { bookshelf, year, info } from './Bookshelf.module.css'
 
 const books2022 = books.filter((book) => book.yearRead === '2022')
 const books2023 = books.filter((book) => book.yearRead === '2023')
@@ -13,13 +12,12 @@ const books2023 = books.filter((book) => book.yearRead === '2023')
 const BookshelfPage = () => {
   return (
     <Layout>
-      <div className={bookshelf}>
-        <h1 className={year}>Bookshelf</h1>
-        <div className={info}>
+      <>
+        <H1>Bookshelf</H1>
+        <Info>
           <p>
             This page lists the books I have read since I bought an Amazon
-            Reader on August 17, 2022. Some of the books will have links to
-            posts containing my retrospective thoughts on them.
+            Reader on August 17, 2022. Some books will have links to my reviews.
           </p>
 
           <img
@@ -32,36 +30,57 @@ const BookshelfPage = () => {
               height: '100%',
             }}
           />
-        </div>
-        <h1 className={year}>2023</h1>
+        </Info>
+
+        <H1>2023</H1>
         {books2023.map((book, index) => (
           <AnimationOnScroll
             key={index}
             animateOnce={true}
             animateIn={'animate__fadeIn'}
           >
-            <div className={book} key={index}>
+            <Book key={index}>
               <h3>{book.name}</h3>
               <p>{book.author}</p>
-            </div>
+            </Book>
           </AnimationOnScroll>
         ))}
-        <h1 className={year}>2022</h1>
+
+        <H1>2022</H1>
         {books2022.map((book, index) => (
           <AnimationOnScroll
             key={index}
             animateOnce={true}
             animateIn={'animate__fadeIn'}
           >
-            <div className={book} key={index}>
+            <Book key={index}>
               <h3>{book.name}</h3>
               <p>{book.author}</p>
-            </div>
+            </Book>
           </AnimationOnScroll>
         ))}
-      </div>
+      </>
     </Layout>
   )
 }
 
 export default BookshelfPage
+
+const H1 = styled.h1`
+  margin-bottom: 3rem;
+`
+const Info = styled.div`
+  background-color: var(--card-bg-color);
+  margin: 1rem 1rem;
+  padding: 4rem;
+  border-radius: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`
+const Book = styled.div`
+  background-color: var(--card-bg-color);
+  margin: 1rem 1rem;
+  padding: 1rem;
+  border-radius: 0.6rem;
+`
