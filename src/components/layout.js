@@ -6,10 +6,6 @@ import { useEffect } from 'react'
 import './layout.css'
 
 const Layout = ({ children }) => {
-  useEffect(() => {
-    document.documentElement.classList.add('dark')
-  })
-
   return (
     <div className="container">
       <Navbar />
