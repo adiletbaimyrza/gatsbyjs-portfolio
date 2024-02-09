@@ -35,7 +35,7 @@ const BlogPage = () => {
   return (
     <Layout>
       <Container>
-        <H1>Articles</H1>
+        <H1>Blog Posts</H1>
         <Grid>
           {articles.map((node, index) => {
             const image = getImage(node.frontmatter.hero_image)
