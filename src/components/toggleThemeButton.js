@@ -12,6 +12,9 @@ const ToggleThemeButton = () => {
   const [theme, setTheme] = useState(initialTheme)
   const [isClicked, setIsClicked] = useState(false)
   const audio = typeof window !== 'undefined' ? new Audio(switchSound) : null
+  if (typeof window !== 'undefined') {
+    audio.volume = 0.1
+  }
 
   const toggleTheme = () => {
     setTheme((theme) => (theme === 'light' ? 'dark' : 'light'))
@@ -64,30 +67,26 @@ const ThemeToggler = styled.button`
   display: flex;
   justify-content: center;
   align-items: center;
+  border: 1px solid var(--btn-border);
+  border-radius: 50%;
+
+  &:hover {
+    background-color: var(--btn-bg-hover);
+    border-color: var(--btn-border-hover);
+  }
 `
 const IconWrapper = styled.div`
   width: 2.2rem;
   height: 2.2rem;
   border-radius: 50%;
-  transition: color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
-  transition: background-color 0.3s cubic-bezier(0.39, 0.575, 0.565, 1);
-
   display: flex;
   justify-content: center;
   align-items: center;
-
-  &:hover {
-    background-color: var(--card-bg-color);
-  }
 `
 
 const icon = css`
   font-size: 1.3rem;
   color: var(--toggle-theme-icon-color);
-
-  @media screen and (max-width: 600px) {
-    font-size: 1.5rem;
-  }
 `
 
 const zoomIn = keyframes`

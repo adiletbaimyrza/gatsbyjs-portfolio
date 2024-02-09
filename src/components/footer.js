@@ -28,60 +28,8 @@ const Footer = () => {
 
   return (
     <MainFooter>
-      <UpperFooter>
-        <Column>
-          <div>
-            <H4>Adilet Baimyrza</H4>
-            <Motto>
-              I help people and teams by building and developing beautifully
-              designed user-friendly products.
-            </Motto>
-            <Socials />
-          </div>
-        </Column>
-
-        <Column>
-          <h4>Navigation</h4>
-          <ul>
-            <FooterLink to={'/'}>Home</FooterLink>
-            <FooterLink to={'/blog'}>Blog</FooterLink>
-            <FooterLink to={'/about'}>About</FooterLink>
-            <FooterLink to={'/projects'}>Projects</FooterLink>
-            <FooterLink to={'/bookshelf'}>Bookshlef</FooterLink>
-          </ul>
-        </Column>
-
-        <Column>
-          <h4>Latest articles</h4>
-          <ul>
-            {data.allMdx.nodes.map((node) => (
-              <li key={node.id}>
-                <GatsbyLink to={`/${node.frontmatter.slug}`}>
-                  {node.frontmatter.title}
-                </GatsbyLink>
-              </li>
-            ))}
-          </ul>
-        </Column>
-
-        <Column>
-          <h4>Latest projects</h4>
-          <ul>
-            <li>project number 1</li>
-            <li>project number 2</li>
-            <li>project number 3</li>
-            <li>project number 4</li>
-          </ul>
-        </Column>
-      </UpperFooter>
-
-      <SubFooter>
-        <SubContainer>
-          <SubItem>&#169; 2023 Adilet Baimyrza</SubItem>
-          <SubItem>Privacy</SubItem>
-          <SubItem>Terms</SubItem>
-        </SubContainer>
-      </SubFooter>
+      <SubItem>&#169; 2023 Adilet Baimyrza</SubItem>
+      <Socials />
     </MainFooter>
   )
 }
@@ -106,6 +54,8 @@ const Column = styled.div`
   margin: 0 1rem;
 `
 const MainFooter = styled.footer`
+  display: flex;
+  justify-content: space-evenly;
   padding-top: 1rem;
   line-height: 2;
   font-size: 0.9rem;

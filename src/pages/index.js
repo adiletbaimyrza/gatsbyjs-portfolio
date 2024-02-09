@@ -1,17 +1,15 @@
 import React from 'react'
 import Layout from '../components/layout'
 import Hero from '../components/hero'
-import LatestArticles from '../components/latestArticles'
+import LatestPosts from '../components/latestPosts'
 import LatestProjects from '../components/latestProjects'
 import Codepens from '../components/codepens'
-import AboutMe from '../components/aboutMe'
 
 const IndexPage = () => {
   return (
     <Layout>
       <Hero />
-      <AboutMe />
-      <LatestArticles />
+      <LatestPosts />
       <LatestProjects />
       <Codepens />
     </Layout>

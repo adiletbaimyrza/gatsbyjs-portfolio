@@ -19,7 +19,6 @@ const Navbar = () => {
         <NavLink to={'/about'}>About</NavLink>
         <NavLink to={'/blog'}>Blog</NavLink>
         <NavLink to={'/projects'}>Projects</NavLink>
-        <NavLink to={'/resume'}>Resume</NavLink>
         <NavLink to={'/bookshelf'}>Bookshelf</NavLink>
       </Navigation>
       <ToggleThemeButton />
@@ -30,36 +29,31 @@ const Navbar = () => {
 export default Navbar
 
 const Nav = styled.nav`
-  max-width: 800px;
-  margin: 0 auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-top: 0.5rem;
 `
 
+const Navigation = styled.ul`
+  display: flex;
+`
+
 const ListItem = styled.li`
-  margin: 0.3rem;
-  border-radius: 0.4rem;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid var(--card-bg-color);
+  margin-right: 0.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid var(--btn-border);
   cursor: pointer;
 
-  & > * {
+  & a {
     padding: 0.5rem 0.6rem;
   }
 
   &:hover {
-    background-color: var(--card-bg-color);
-  }
-`
-
-const Navigation = styled.ul`
-  display: flex;
-
-  @media screen and (max-width: 600px) {
-    display: none;
+    background-color: var(--btn-bg-hover);
+    border-color: var(--btn-border-hover);
   }
 `
